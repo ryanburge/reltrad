@@ -1,5 +1,7 @@
 This is the STATA coding for the National Election Study version of reltrad. 
 
+Note that this will only work on the NES beginning with the 1990 data file. 
+
 
 /* Creating RELTRAD Classifiers */
 
