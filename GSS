@@ -1,0 +1,183 @@
+The previous version of this coding was available on the Indiana University website, but has since been taken down. 
+
+That web address was: http://www.indiana.edu/soc/pdf/RELTRADsyntax3versions.pdf
+
+
+*****************************************************
+set maxvar 10000
+use D:\FullGSS.DTA
+
+
+gen xaffil=relig 
+recode xaffil 1=1 2=4 3=5 4=9 5/10=6 11=1 12=6 13=1 *=. 
+label def xaffil 1 prot 4 cath 5 jew 6 other 9 nonaf 
+label values xaffil xaffil 
+ 
+
+gen xbp=other 
+recode xbp 7 14 15 21 37 38 56 78 79 85 86 87 88 98 103 104 128 133=1 *=0 
+recode xbp 0=1 if denom==12 
+recode xbp 0=1 if denom==13 
+recode xbp 0=1 if denom==20 
+recode xbp 0=1 if denom==21 
+gen bl=race 
+recode bl 2=1 *=0 
+gen bldenom=denom*bl 
+recode xbp 0=1 if bldenom==23 
+recode xbp 0=1 if bldenom==28 
+recode xbp 0=1 if bldenom==18 
+recode xbp 0=1 if bldenom==15 
+recode xbp 0=1 if bldenom==10 
+recode xbp 0=1 if bldenom==11 
+recode xbp 0=1 if bldenom==14 
+gen blother=other*bl 
+recode xbp 0=1 if blother==93 
+
+gen xev=other 
+recode xev 2 3 5 6 9 10 12 13 16 18 20 22 24 26 27 28 31 32 34 35 36 39 41 42 43 45 47 51 52 53 55 57 63 65 66 67 68 69 76 77 83 84 90 91 92 94 97 100 101 102 106 107 108 109 110 111 112 115 116 117 118 120 121 122 124 125 127 129 131 132 134 135 138 139 140 146=1 *=0 
+recode xev 0=1 if denom==32 
+recode xev 0=1 if denom==33 
+recode xev 0=1 if denom==34 
+recode xev 0=1 if denom==42 
+gen wh=race 
+recode wh 1=1 2=0 3=1 
+gen whdenom=denom*wh 
+recode xev 0=1 if whdenom==23 
+recode xev 0=1 if whdenom==18 
+recode xev 0=1 if whdenom==15 
+recode xev 0=1 if whdenom==10 
+recode xev 0=1 if whdenom==14 
+gen whother=other*wh 
+recode xev 0=1 if whother==93 
+ 
+recode xev 1=0 if xbp==1 
+
+gen dev=other 
+recode dev 2 3 5 6 9 10 12 13 16 18 20 22 24 26 27 28 31 32 34 35 36 39 41 42 43 45 47 51 52 53 55 57 63 65 66 67 68 69 76 77 83 84 90 91 92 94 97 100 101 102 106 107 108 109 110 111 112 115 116 117 118 120 121 122 124 125 127 129 131 132 134 135 138 139 140 146=1 *=0 
+recode dev 0=1 if denom==32 
+recode dev 0=1 if denom==33 
+recode dev 0=1 if denom==34 
+recode dev 0=1 if denom==42 
+
+recode dev 0=1 if whdenom==23 
+recode dev 0=1 if whdenom==18 
+recode dev 0=1 if whdenom==15 
+recode dev 0=1 if whdenom==10 
+recode dev 0=1 if whdenom==14 
+
+recode dev 0=1 if whother==93 
+ 
+recode dev 1=0 if xbp==1 
+
+
+gen xml=other 
+recode xml 1 8 19 23 25 40 44 46 48 49 50 54 70 71 72 73 81 89 96 99 105 119 148=1 *=0 
+recode xml 0=1 if denom==22 
+recode xml 0=1 if denom==30 
+recode xml 0=1 if denom==31 
+recode xml 0=1 if denom==35 
+recode xml 0=1 if denom==38 
+recode xml 0=1 if denom==40 
+recode xml 0=1 if denom==41 
+recode xml 0=1 if denom==43 
+recode xml 0=1 if denom==48 
+recode xml 0=1 if denom==50 
+recode xml 0=1 if whdenom==11 
+recode xml 0=1 if whdenom==28 
+
+
+
+gen xcath=other 
+recode xcath 123=1 *=0
+recode xcath 0=1 if xaffil==4 
+
+gen xjew=0 
+recode xjew 0=1 if xaffil==5 
+ 
+
+gen xother=other  
+recode xother 11 17 29 30 33 58 59 60 61 62 64 74 75 80 82 95 113 114 130 136 141 145=1 *=0 
+gen noxev=1-xev 
+gen noxevxaf=noxev*xaffil 
+recode xother 0=1 if noxevxaf==6 
+ 
+gen xnonaff=xaffil 
+recode xnonaff 9=1 *=0 
+
+gen xprotdk=denom 
+recode xprotdk 70=1 *=0 
+recode xprotdk 1=0 if attend==0 
+recode xprotdk 1=0 if attend==1 
+recode xprotdk 1=0 if attend==2 
+recode xprotdk 1=0 if attend==3 
+recode xprotdk 1=0 if attend==9 
+recode xprotdk 1=0 if attend==. 
+recode xev 0=1 if xprotdk==1 
+
+gen newxev =xev
+
+
+*THIS IS THE CORRECTED CODING*
+
+
+*This takes people who responded that they were Christian in the relig variable but didn't get asked the followup and puts them into reltrad*
+gen xtn = relig
+gen denom2=denom
+recode denom2 70=1 10/60=0
+recode xtn 11=1 else=0
+recode xtn 1=2 if denom2==1
+recode xtn 1=1 else=0
+
+recode xtn 1=0 if attend==0 
+recode xtn 1=0 if attend==1 
+recode xtn 1=0 if attend==2 
+recode xtn 1=0 if attend==3 
+recode xtn 1=0 if attend==9 
+recode xtn 1=0 if attend==. 
+recode newxev 0=1 if xtn==1 
+
+*This takes people who responded that they were Interdenominational in the relig variable but didn't get asked the followup and puts them into reltrad*
+gen inter = relig
+recode inter 13=1 else=0
+recode inter 1=0 if attend==0 
+recode inter 1=0 if attend==1 
+recode inter 1=0 if attend==2 
+recode inter 1=0 if attend==3 
+recode inter 1=0 if attend==9 
+recode inter 1=0 if attend==. 
+recode newxev 0=1 if inter==1 
+
+**CORRECTED CODING OVER**
+
+
+gen reltrad=0 
+recode reltrad 0=7 if xnonaf==1 
+recode reltrad 0=6 if xother==1 
+recode reltrad 0=5 if xjew==1 
+recode reltrad 0=4 if xcath==1 
+recode reltrad 0=3 if xbp==1 
+recode reltrad 0=2 if xml==1 
+recode reltrad 0=1 if xev==1 
+recode reltrad 0=.  
+
+label def reltrad 1 "evangelical" 2 "mainline" 3 "black protestant" 4 "catholic" 5 "jewish" 6 "other faith" 7 "nonaffiliated" 8 "New_evangelical"
+label values reltrad reltrad 
+
+
+*I added this part to create dummies for each of the religious traditions in RELTRAD*
+gen evangelical = reltrad
+recode evangelical 1=1 else=0
+gen mainline = reltrad
+recode mainline 2=1 else=0
+gen blackprot = reltrad
+recode blackprot 3=1 else=0
+gen catholic = reltrad
+recode catholic 4=1 else=0
+gen jewish = reltrad
+recode jewish 5=1 else=0
+gen otherfaith = reltrad
+recode otherfaith 6=1 else=0
+gen nofaith =reltrad
+recode nofaith 7=1 else=0
+
+gen newevan = newxev
