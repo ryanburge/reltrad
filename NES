@@ -1,0 +1,238 @@
+This is the STATA coding for the National Election Study version of reltrad. 
+
+
+/* Creating RELTRAD Classifiers */
+
+gen ee = VCF0152
+gen mm = VCF0152
+gen bb  = VCF0152
+gen cc = VCF0152
+gen jj  = VCF0152
+gen oo  = VCF0152
+gen nn = VCF0152
+
+
+recode ee 10=1 if attend >=3 & black !=1
+recode nn 10=1 if attend <=3 
+recode bb 10=1 if black ==1
+recode ee 20=1 if attend >=3 & black !=1
+recode nn 20=1 if attend <=3 
+recode bb 20=1 if black ==1
+recode ee 30=1 if attend >=3 & black !=1
+recode nn 30=1 if attend <=3 
+recode bb 30=1 if black ==1
+recode ee 40=1 if attend >=3 & black !=1
+recode nn 40=1 if attend <=3 
+recode bb 40=1 if black ==1
+recode ee 99=1 if attend >=3 & black !=1
+recode nn 99=1 if attend <=3 
+recode bb 99=1 if black ==1
+recode ee 100=1
+recode ee 102=1
+recode ee 109=1
+recode mm 110=1
+recode mm 111=1
+recode bb 120=1 if black ==1
+recode mm 120=1 if black !=1
+recode mm 121=1
+recode bb 122=1 if black ==1
+recode ee 122=1 if black !=1
+recode bb 123=1 if black ==1
+recode ee 123=1 if black !=1
+recode bb 124=1 if black ==1
+recode ee 124=1 if black !=1
+recode bb 125=1 if black ==1
+recode ee 125=1 if black !=1
+recode bb 126=1 if black ==1
+recode ee 126=1 if black !=1
+recode bb 127=1 if black ==1
+recode ee 127=1 if black !=1
+recode bb 128=1 if black ==1
+recode ee 128=1 if black !=1
+recode bb 129=1 if black ==1
+recode ee 129=1 if black !=1
+recode bb 130=1 if black ==1
+recode ee 130=1 if black !=1
+recode bb 131=1 if black ==1
+recode ee 131=1 if black !=1
+recode bb 132=1 if black ==1
+recode ee 132=1 if black !=1
+recode bb 133=1 if black ==1
+recode ee 133=1 if black !=1
+recode bb 134=1 if black ==1
+recode ee 134=1 if black !=1
+recode bb 135=1 if black ==1
+recode ee 135=1 if black !=1
+recode bb 147=1 if black ==1
+recode ee 147=1 if black !=1
+recode bb 148=1 if black ==1
+recode ee 148=1 if black !=1
+recode bb 149=1 if black ==1
+recode ee 149=1 if black !=1
+recode mm 150=1
+recode mm 155=1
+recode mm 160=1
+recode mm 161=1
+recode ee 162=1
+recode mm 163=1
+recode ee 164=1
+recode mm 165=1
+recode ee 166=1
+recode ee 167=1
+recode mm 168=1
+recode ee 170=1
+recode ee 180=1
+recode ee 181=1 if black !=1
+recode bb 181=1 if black ==1
+recode ee 182=1
+recode ee 183=1
+recode ee 184=1
+recode ee 185=1
+recode ee 186=1 if black !=1
+recode bb 186=1 if black ==1
+recode ee 199=1
+recode ee 200=1
+recode ee 201=1
+recode ee 219=1
+recode mm 220=1
+recode ee 221=1
+recode ee 222=1
+recode ee 223=1
+recode ee 229=1
+recode mm 230=1
+recode bb 231=1
+recode bb 232=1
+recode bb 233=1
+recode ee 234=1
+recode ee 240=1
+recode ee 249=1 if black !=1
+recode bb 249=1 if black ==1
+recode bb 250=1 if black ==1
+recode ee 250=1 if black !=1
+recode bb 251=1 if black ==1
+recode ee 251=1 if black !=1
+recode bb 252=1 if black ==1
+recode ee 252=1 if black !=1
+recode bb 253=1 if black ==1
+recode ee 253=1 if black !=1
+recode bb 254=1 if black ==1
+recode ee 254=1 if black !=1
+recode bb 255=1 if black ==1
+recode ee 255=1 if black !=1
+recode bb 256=1 if black ==1
+recode ee 256=1 if black !=1
+recode bb 257=1 if black ==1
+recode ee 257=1 if black !=1
+recode bb 258=1 if black ==1
+recode ee 258=1 if black !=1
+recode bb 259=1 if black ==1
+recode ee 259=1 if black !=1
+recode bb 260=1 if black ==1
+recode ee 260=1 if black !=1
+recode bb 261=1 if black ==1
+recode ee 261=1 if black !=1
+recode bb 262=1 if black ==1
+recode ee 262=1 if black !=1
+recode bb 263=1 if black ==1
+recode ee 263=1 if black !=1
+recode bb 264=1 if black ==1
+recode ee 264=1 if black !=1
+recode bb 265=1 if black ==1
+recode ee 265=1 if black !=1
+recode bb 266=1 if black ==1
+recode ee 266=1 if black !=1
+recode bb 267=1 if black ==1
+recode ee 267=1 if black !=1
+recode bb 268=1 if black ==1
+recode ee 268=1 if black !=1
+recode bb 269=1 if black ==1
+recode ee 269=1 if black !=1
+recode mm 270=1
+recode mm 271=1
+recode mm 272=1
+recode mm 275=1 
+recode mm 276=1
+recode mm 279=1
+recode ee 280=1
+recode mm 281=1
+recode mm 282=2
+recode mm 289=1
+recode mm 290=1
+recode ee 291=1
+recode ee 292=1
+recode ee 293=1
+recode oo 300=1
+recode oo 301=1
+recode oo 302=1
+recode oo 303=1
+recode oo 304=1
+recode oo 305=1
+recode oo 306=1
+recode oo 309=1
+recode cc 400=1
+recode jj 500=1
+recode jj 501=1
+recode jj 502=1
+recode jj 503=1
+recode jj 524=1
+recode oo 700=1
+recode oo 701=1
+recode oo 702=1
+recode oo 703=1
+recode oo 704=1
+recode oo 705=1
+recode oo 706=1
+recode oo 707=1
+recode oo 708=1
+recode oo 719=1
+recode oo 720=1
+recode oo 721=1
+recode oo 722=1
+recode oo 723=1
+recode oo 724=1
+recode oo 725=1
+recode oo 726=1
+recode oo 727=1
+recode oo 729=1
+recode oo 750=1
+recode oo 790=1
+recode oo 795=1
+recode nn 800=1
+recode nn 801=1
+recode nn 997=1
+
+gen evangelical = ee
+recode evangelical 1=1 else=0
+gen mainline = mm 
+recode mainline 1=1 else=0
+gen blackprot = bb
+recode blackprot 1=1 else=0
+gen catholic = cc
+recode catholic 1=1 else=0
+gen jewish = jj
+recode jewish 1=1 else=0
+gen other = oo
+recode other 1=1 else=0
+gen noreligion = nn
+recode noreligion 1=1 else=0
+
+gen evan2 = evangelical
+gen main2 = mainline 
+gen bprot2 = blackprot 
+gen catholic2 = catholic 
+gen jewish2 = jewish 
+gen other2 = other
+gen noreligion2 = noreligion 
+
+recode main2 1=2 else=0
+recode bprot2 1=3 else=0
+recode catholic2 1=4 else=0
+recode jewish2 1=5 else=0
+recode other2 1=6 else=0
+recode noreligion2 1=7 else=0
+
+gen reltrad = evan2 + main2 + bprot2 + catholic2 + jewish2 + other2 + noreligion2
+recode reltrad 0=. 8=7 10=7
+
+label def reltrad 1 "evangelical" 2 "mainline" 3 "black protestant" 4 "catholic" 5 "jewish" 6 "other faith" 7 "nonaffiliated" 
+label values reltrad reltrad
