@@ -7,7 +7,6 @@ That web address was: http://www.indiana.edu/soc/pdf/RELTRADsyntax3versions.pdf
 set maxvar 10000
 use D:\FullGSS.DTA
 
-
 gen xaffil=relig 
 recode xaffil 1=1 2=4 3=5 4=9 5/10=6 11=1 12=6 13=1 *=. 
 label def xaffil 1 prot 4 cath 5 jew 6 other 9 nonaf 
@@ -114,7 +113,7 @@ recode xprotdk 1=0 if attend==9
 recode xprotdk 1=0 if attend==. 
 recode xev 0=1 if xprotdk==1 
 
-gen newxev =xev
+
 
 
 *THIS IS THE CORRECTED CODING*
@@ -134,7 +133,7 @@ recode xtn 1=0 if attend==2
 recode xtn 1=0 if attend==3 
 recode xtn 1=0 if attend==9 
 recode xtn 1=0 if attend==. 
-recode newxev 0=1 if xtn==1 
+recode xev 0=1 if xtn==1 
 
 *This takes people who responded that they were Interdenominational in the relig variable but didn't get asked the followup and puts them into reltrad*
 gen inter = relig
@@ -145,7 +144,7 @@ recode inter 1=0 if attend==2
 recode inter 1=0 if attend==3 
 recode inter 1=0 if attend==9 
 recode inter 1=0 if attend==. 
-recode newxev 0=1 if inter==1 
+recode xev 0=1 if inter==1 
 
 **CORRECTED CODING OVER**
 
@@ -180,4 +179,3 @@ recode otherfaith 6=1 else=0
 gen nofaith =reltrad
 recode nofaith 7=1 else=0
 
-gen newevan = newxev
