@@ -159,7 +159,7 @@ recode reltrad 0=2 if xml==1
 recode reltrad 0=1 if xev==1 
 recode reltrad 0=.  
 
-label def reltrad 1 "evangelical" 2 "mainline" 3 "black protestant" 4 "catholic" 5 "jewish" 6 "other faith" 7 "nonaffiliated" 8 "New_evangelical"
+label def reltrad 1 "evangelical" 2 "mainline" 3 "black protestant" 4 "catholic" 5 "jewish" 6 "other faith" 7 "nonaffiliated" 
 label values reltrad reltrad 
 
 
