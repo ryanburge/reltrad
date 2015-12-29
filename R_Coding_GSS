@@ -1,0 +1,166 @@
+
+***This coding requires the "car" package in order to use the recode function
+library(car)
+
+***This assumes that the dataframe containing the GSS is called "GSS"
+attach(GSS)
+
+***Coding begins here
+xaffil <- relig
+xaffil <- recode(xaffil, "1=1; 2=4; 3=5; 4=9; 5:10=6; 11=1; 12=6; 13=1")
+
+xbp <- other 
+xbp <- recode(xbp, "7=1; 14:15=1; 21=1; 37:38=1; 56=1; 78:79=1; 85:88=1; 98=1; 103:104=1; 128=1; 133=1; else=0")
+xbp[denom==12] <- 1
+xbp[denom==13] <- 1
+xbp[denom==20] <- 1
+xbp[denom==21] <- 1
+xbp[is.na(xbp)] <- 0
+
+bl <- race
+bl <- recode(bl, "2=1; else=0")
+bldenom <- denom * bl
+bldenom[is.na(bldenom)] <- 0
+
+xbp[bldenom==23] <- 1
+xbp[bldenom==28] <- 1
+xbp[bldenom==18] <- 1
+xbp[bldenom==15] <- 1
+xbp[bldenom==10] <- 1
+xbp[bldenom==11] <- 1
+xbp[bldenom==14] <- 1
+xbp[is.na(xbp)] <- 0
+
+blother <- other * bl
+xbp[blother==93] <- 1
+
+xev <- other 
+xev <- recode(xev, "2=1; 3=1; 5:6=1; 9:10=1; 12:13=1; 16=1; 18=1; 20=1; 22=1; 24=1; 26:28=1; 31:32=1; 34:36=1; 39=1; 41:43=1; 45=1; 47=1; 51:53=1; 55=1; 57=1; 63=1; 65:69=1; 76:77=1; 83:84=1; 90:92=1; 94=1; 97=1; 100:102=1; 106:112=1; 115:118=1; 120:122=1; 124:125=1; 127=1; 129=1; 131:132=1; 134:135=1; 138:140=1; 146=1; else=0")
+xev[denom ==32] <- 1
+xev[denom ==33] <- 1
+xev[denom ==34] <- 1
+xev[denom ==42] <- 1
+
+wh <- race
+wh <- recode(wh, "1=1; 2=0; 3=1")
+whdenom <- denom*wh
+
+xev[whdenom ==23] <- 1
+xev[whdenom ==18] <- 1
+xev[whdenom ==15] <- 1
+xev[whdenom ==10] <- 1
+xev[whdenom ==14] <- 1
+
+whother <- other*wh
+xev[whother ==93] <- 1
+
+xev[xbp ==1] <- 0
+
+dev <- other 
+dev <- recode(dev, "2=1; 3=1; 5=1; 6=1; 9=1; 10=1; 12=1; 13=1; 16=1; 18=1; 20=1; 22=1; 24=1; 26=1; 27=1; 28=1; 31=1; 32=1; 34=1; 35=1; 36=1; 39=1; 41=1; 42=1; 43=1; 45=1; 47=1; 51=1; 52=1; 53=1; 55=1; 57=1; 63=1; 65=1; 66=1; 67=1; 68=1; 69=1; 76=1; 77=1; 83=1; 84=1; 90=1; 91=1; 92=1; 94=1; 97=1; 100=1; 101=1; 102=1; 106=1; 107=1; 108=1; 109=1; 110=1; 111=1; 112=1; 115=1; 116=1; 117=1; 118=1; 120=1; 121=1; 122=1; 124=1; 125=1; 127=1; 129=1; 131=1; 132=1; 134=1; 135=1; 138=1; 139=1; 140=1; 146=1; else=0")
+dev[denom ==32] <- 1
+dev[denom ==33] <- 1
+dev[denom ==34] <- 1
+dev[denom ==42] <- 1
+dev[denom ==32] <- 1
+dev[whdenom ==23] <- 1
+dev[whdenom ==18] <- 1
+dev[whdenom ==15] <- 1
+dev[whdenom ==10] <- 1
+dev[whdenom ==14] <- 1
+dev[whother ==93] <- 1
+dev[xbp ==1] <- 0
+
+xml <- other 
+xml <- recode(xml, "1=1; 8=1; 19=1; 23=1; 25=1; 40=1; 44=1; 46=1; 48:50=1; 54=1; 70:73=1; 81=1; 89=1; 96=1; 99=1; 105=1; 119=1; 148=1; else=0")  
+xml[denom ==22] <- 1
+xml[denom ==30] <- 1
+xml[denom ==31] <- 1
+xml[denom ==35] <- 1
+xml[denom ==38] <- 1
+xml[denom ==40] <- 1
+xml[denom ==41] <- 1
+xml[denom ==43] <- 1
+xml[denom ==48] <- 1
+xml[denom ==50] <- 1
+xml[whdenom ==11] <- 1
+xml[whdenom ==28] <- 1
+xml[xbp ==1] <- 0
+
+xcath <- other 
+xcath <- recode(xcath, "123=1; else=0")
+xcath[xaffil ==4] <- 1
+
+xjew <- xaffil
+xjew <- recode(xjew, "5=1; else=0") 
+
+xother <- other 
+xother <- recode(xother, "11=1; 17=1; 29=1; 30=1; 33=1; 58=1; 59=1; 60=1; 61=1; 62=1; 64=1; 74=1; 75=1; 80=1; 82=1; 95=1; 113=1; 114=1; 130=1; 136=1; 141=1; 145=1; else=0") 
+noxev <- 1-xev
+noxevxaf <- noxev*xaffil
+
+xother[noxevxaf ==6] <-1
+xother[is.na(xother)] <- 0
+
+xnonaff <- relig
+xnonaff <- recode(xnonaff, "4=1; else=0")
+
+xprotdk <- denom
+xprotdk <- recode(xprotdk, "70=1; else=0")
+xprotdk[attend ==0] <- 0
+xprotdk[attend ==1] <- 0
+xprotdk[attend ==2] <- 0
+xprotdk[attend ==3] <- 0
+xprotdk[attend ==9] <- 0
+xprotdk[attend ==NA] <- 0
+xev[xprotdk ==1] <- 1
+
+xtn <- relig
+denom2 <- denom
+denom2 <- recode(denom2, "70=1; else=0")
+xtn <- recode(xtn, "11=1; else=0")
+xtn[denom2 ==1] <- 2
+xtn <- recode(xtn, "1=1; 2=0")
+xtn[attend ==0] <- 0
+xtn[attend ==1] <- 0
+xtn[attend ==2] <- 0
+xtn[attend ==3] <- 0
+xtn[attend ==9] <- 0
+xtn[attend ==NA] <- 0
+xev[xtn ==1] <- 1
+
+inter <- relig 
+inter <- recode(inter, "13=1; else=0")
+inter[attend ==0] <- 0
+inter[attend ==1] <- 0
+inter[attend ==2] <- 0
+inter[attend ==3] <- 0
+inter[attend ==9] <- 0
+inter[attend ==NA] <- 0
+xev[inter ==1] <- 1
+
+evangelical <- xev
+mainline <- xml
+blackprot <- xbp
+catholic <- xcath
+jewish <- xjew
+other <- xother
+none <- xnonaff
+
+detach(GSS)
+
+
+evan <- evangelical
+ml <- recode(mainline, "1=2; else=0")
+bprot <- recode(blackprot, "1=3; else=0")
+cath <- recode(catholic, "1=4; else=0")
+jew <- recode(jewish, "1=5; else=0")
+oth <- recode(other, "1=6; else=0")
+nne <- recode(none, "1=7; else=0")
+
+reltrad <- evan + ml + bprot + cath + jew + oth + nne
+
+
+
+
+
