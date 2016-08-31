@@ -1,0 +1,185 @@
+***********************************
+* RELTRAD Sorting File for NES    *
+* 1990- Present (Not 2002)        *
+* Date 5/26/16                    *
+* Author: Ryan Burge              *
+***********************************
+
+** This file only works on the NES cumulative file.
+** It also will only work on the NES after 1990
+** It will not work on the 2002 NES data, however.
+
+gen relig = VCF0152
+gen attend = VCF0130
+recode attend 1/3= 2 4=1 else=0
+gen race = VCF0106
+gen black = race
+recode black 2=1 else=0
+
+gen prot1 = relig
+recode prot1 010 =1 else=0
+recode prot1 1=0 if black ==1
+
+gen prot2 = relig
+recode prot2 020 =1 else=0
+recode prot2 1=0 if black ==1
+
+gen prot3 = relig
+recode prot3 030 =1 else=0
+recode prot3 1=0 if black ==1
+
+gen prot4 = relig
+recode prot4 040 =1 else=0
+recode prot4 1=0 if black ==1
+
+gen prot5 = relig
+recode prot5 99 =1 else=0
+recode prot5 1=0 if black ==1
+
+gen evan = relig
+recode evan 100 =1 if black !=1
+recode evan 102 =1 if black !=1
+recode evan 109 =1 if black !=1
+recode evan 120 =1 if black !=1
+recode evan 122 =1 if black !=1
+recode evan 123 =1 if black !=1
+recode evan 124 =1 if black !=1
+recode evan 125 =1 if black !=1
+recode evan 126 =1 if black !=1
+recode evan 127 =1 if black !=1
+recode evan 129 =1 if black !=1
+recode evan 130 =1 if black !=1
+recode evan 131 =1 if black !=1
+recode evan 132 =1 if black !=1
+recode evan 133 =1 if black !=1
+recode evan 134 =1 if black !=1
+recode evan 135 =1 if black !=1
+recode evan 147 =1 if black !=1
+recode evan 148 =1 if black !=1
+recode evan 149 =1 if black !=1
+recode evan 160 =1 if black !=1
+recode evan 161 =1 if black !=1
+recode evan 162 =1 if black !=1
+recode evan 164 =1 if black !=1
+recode evan 166 =1 if black !=1
+recode evan 167 =1 if black !=1
+recode evan 168 =1 if black !=1
+recode evan 170 =1 if black !=1
+recode evan 180 =1 if black !=1
+recode evan 181 =1 if black !=1
+recode evan 182 =1 if black !=1
+recode evan 183 =1 if black !=1
+recode evan 184 =1 if black !=1
+recode evan 185 =1 if black !=1
+recode evan 186 =1 if black !=1
+recode evan 199 =1 if black !=1
+recode evan 200 =1 if black !=1
+recode evan 201 =1 if black !=1
+recode evan 219 =1 if black !=1
+recode evan 221 =1 if black !=1
+recode evan 222 =1 if black !=1
+recode evan 223 =1 if black !=1
+recode evan 233 =1 if black !=1
+recode evan 234 =1 if black !=1
+recode evan 250 =1 if black !=1
+recode evan 251 =1 if black !=1
+recode evan 252 =1 if black !=1
+recode evan 253 =1 if black !=1
+recode evan 254 =1 if black !=1
+recode evan 255 =1 if black !=1
+recode evan 256 =1 if black !=1
+recode evan 260 =1 if black !=1
+recode evan 261 =1 if black !=1
+recode evan 262 =1 if black !=1
+recode evan 263 =1 if black !=1
+recode evan 264 =1 if black !=1
+recode evan 268 =1 if black !=1
+recode evan 269 =1 if black !=1
+recode evan 271 =1 if black !=1
+recode evan 272 =1 if black !=1
+recode evan 275 =1 if black !=1
+recode evan 276 =1 if black !=1
+recode evan 280 =1 if black !=1
+recode evan 291 =1 if black !=1
+recode evan 292 =1 if black !=1
+recode evan 1=1 else=0
+recode evan 0=1 if prot1==1 & attend ==2
+recode evan 0=1 if prot2==1 & attend ==2
+recode evan 0=1 if prot3==1 & attend ==2
+recode evan 0=1 if prot4==1 & attend ==2
+recode evan 0=1 if prot5==1 & attend ==2
+
+gen mline= relig
+recode mline 121 =1 if black !=1
+recode mline 249 =1 if black !=1
+recode mline 1 110 111 150 155 163 165 220 229 230 270 279 281 282 289 290 293 =1  else=0
+recode mline 0=1 if prot1==1 & attend ==1
+recode mline 0=1 if prot2==1 & attend ==1
+recode mline 0=1 if prot3==1 & attend ==1
+recode mline 0=1 if prot4==1 & attend ==1
+recode mline 0=1 if prot5==1 & attend ==1
+
+
+gen bprot = relig
+recode bprot 120 =1 if black ==1
+recode bprot 121 =1 if black ==1
+recode bprot 122 =1 if black ==1
+recode bprot 123 =1 if black ==1
+recode bprot 124 =1 if black ==1
+recode bprot 125 =1 if black ==1
+recode bprot 126 =1 if black ==1
+recode bprot 127 =1 if black ==1
+recode bprot 128 =1 if black ==1
+recode bprot 129 =1 if black ==1
+recode bprot 130 =1 if black ==1
+recode bprot 131 =1 if black ==1
+recode bprot 132 =1 if black ==1
+recode bprot 133 =1 if black ==1
+recode bprot 134 =1 if black ==1
+recode bprot 135 =1 if black ==1
+recode bprot 147 =1 if black ==1
+recode bprot 148 =1 if black ==1
+recode bprot 149 =1 if black ==1
+recode bprot 231 =1 if black ==1
+recode bprot 232 =1 if black ==1
+recode bprot 233 =1 if black ==1
+recode bprot 234 =1 if black ==1
+recode bprot 240 =1 if black ==1
+recode bprot 249 =1 if black ==1
+recode bprot 257 =1 if black ==1
+recode bprot 258 =1 if black ==1
+recode bprot 267 =1 if black ==1
+recode bprot 1=1 else=0
+
+gen cath = relig
+recode cath 400 700 701 702 703 704 705 706 707 708 719 =1 else=0
+
+gen jew = relig
+recode jew 500 501 502 503 524 =1 else=0
+
+gen other = relig
+recode other 300 301 302 303 304 305 306 309 720 721 722 723 724 725 726 727 729 750 790 795 997 998 =1 else=0
+
+gen none = relig
+recode none 800 801 =1 else=0
+
+gen reltrad=0
+recode reltrad 0=7 if none==1
+recode reltrad 0=6 if other==1
+recode reltrad 0=5 if jew==1
+recode reltrad 0=4 if cath==1
+recode reltrad 0=3 if bprot==1
+recode reltrad 0=2 if mline==1
+recode reltrad 0=1 if evan==1
+recode reltrad 0=.
+
+** To check the code here are some results
+** 2012 NES = 1126 evangelicals
+** 2008 NES = 478 evangelicals
+** 2004 NES = 256 evangelicals
+** 2000 NES = 395 evangelicals
+** 1998 NES = 249 evangelicals
+** 1996 NES = 400 evangelicals
+** 1994 NES = 442 evangelicals
+** 1992 NES = 583 evangelicals
+** 1990 NES = 466 evangelicals
