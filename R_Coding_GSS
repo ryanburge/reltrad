@@ -147,8 +147,6 @@ jewish <- xjew
 other <- xother
 none <- xnonaff
 
-detach(GSS)
-
 
 evan <- evangelical
 ml <- recode(mainline, "1=2; else=0")
