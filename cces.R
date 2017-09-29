@@ -1,5 +1,5 @@
 
-## This is a close approximation of RELTRAD in the CCES
+## This is a close approximation of RELTRAD evangelical in the CCES
 ## This is for the 2016 CCES file and it's read into R as cces16
 
 cces16$evanbaptist <- Recode(cces16$religpew_baptist, "1=1; 5:90=1; else=0")
@@ -21,7 +21,7 @@ cces16$evangelical <- Recode(cces16$evangelical, "1:4=1; else=0")
 ## Traditionally RELTRAD includes all not black individuals in the evangelical category. 
 
 
-## This is a close approximation of RELTRAD in the CCES
+## This is a close approximation of RELTRAD evangelical in the CCES
 ## This is for the 2012 CCES file and it's read into R as cces12
 
 cces12$evanbaptist <- Recode(cces12$religpew_baptist, "1=1; 5:90=1; else=0")
@@ -43,7 +43,7 @@ cces12$evangelical <- Recode(cces12$evangelical, "1:4=1; else=0")
 ## The variable is 'race' and 1 is white, 2 is black, 3 is hispanic, etc. 
 ## Traditionally RELTRAD includes all not black individuals in the evangelical category. 
 
-## This is a close approximation of RELTRAD in the CCES
+## This is a close approximation of RELTRAD evangelical in the CCES
 ## This is for the 2008 CCES file and it's read into R as cces08
 
 cces08$evanbaptist <- Recode(cces08$V222, "1=1; 5:90=1; else=0")
