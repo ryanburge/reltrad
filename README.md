@@ -16,7 +16,7 @@ This repository contains five files:
 
 [5. An R script file for creating an evangelical category for the Cooperative Congressional Election Study in 2008, 2012, and 2016.](https://github.com/ryanburge/reltrad/blob/master/cces.R)
 
-##Don't want to mess with all this scripting? 
+# Don't want to mess with all this scripting? 
 
 Here is a [link](https://goo.gl/gh87Jn) to the full GSS dataset from 1972-2016 with the addition of the reltrad variable in .dta format. 
 
