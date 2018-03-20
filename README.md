@@ -20,6 +20,16 @@ This repository contains five files:
 
 Here is a [link](https://goo.gl/gh87Jn) to the full GSS dataset from 1972-2016 with the addition of the reltrad variable in .dta format. 
 
+Here is a [link](https://pmaileiu-my.sharepoint.com/:u:/g/personal/rpburge_eiu_edu/EXEz9UDs_T9KkJ_3S27UJSoBYT9Jn_DHSYOb_pbK_LA0aQ?e=VKTErG) for the 2008 CCES in .dta format. 
+
+Here is a [link](https://pmaileiu-my.sharepoint.com/:u:/g/personal/rpburge_eiu_edu/Edj2P5fmZ8tMnKCXrh2fW-cBx6WPp_rBBB-lhtlZ_Z20IQ?e=i7Wl23) for the 2010 CCES in .dta format. 
+
+Here is a [link](https://pmaileiu-my.sharepoint.com/:u:/g/personal/rpburge_eiu_edu/EezXVteNYC5GhwPU9q8RFPQBjb46UTrppsn7bCbEMpPk8w?e=0zdNXf) for the 2012 CCES in .dta format. 
+
+Here is a [link](https://pmaileiu-my.sharepoint.com/:u:/g/personal/rpburge_eiu_edu/EX_IKWbSQ1ZOmG1Z2Hbo8w8B1gKbNJec0jmuGI-RkhdgsA?e=1lufSE) for the 2014 CCES in .dta format. 
+
+Here is a [link](https://pmaileiu-my.sharepoint.com/:u:/g/personal/rpburge_eiu_edu/EQ-f-DvsX65BgJvyQTjEZdsBXG42-5emx4Dr19mBgZ5NGA?e=90T7SU) for the 2016 CCES in .dta format. 
+
 
 
 
