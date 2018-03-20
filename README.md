@@ -14,7 +14,7 @@ This repository contains five files:
 
 [4. A Stata do file for creating the reltrad classification scheme for the National Election Study cumulative file after 1990 (except 2002)](https://github.com/ryanburge/reltrad/blob/master/NES_1990_Present)
 
-[5. An R script file for creating an evangelical category for the Cooperative Congressional Election Study in 2008, 2012, and 2016.](https://github.com/ryanburge/reltrad/blob/master/cces.R)
+[5. A folder with R script files for creating reltrad classification for the Cooperative Congressional Election Study in 2008, 2010, 2012, 2014, and 2016](https://github.com/ryanburge/reltrad/tree/master/CCES)
 
 # Don't want to mess with all this scripting? 
 
