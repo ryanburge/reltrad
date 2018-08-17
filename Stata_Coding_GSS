@@ -51,23 +51,6 @@ recode xev 0=1 if whother==93
  
 recode xev 1=0 if xbp==1 
 
-gen dev=other 
-recode dev 2 3 5 6 9 10 12 13 16 18 20 22 24 26 27 28 31 32 34 35 36 39 41 42 43 45 47 51 52 53 55 57 63 65 66 67 68 69 76 77 83 84 90 91 92 94 97 100 101 102 106 107 108 109 110 111 112 115 116 117 118 120 121 122 124 125 127 129 131 132 134 135 138 139 140 146=1 *=0 
-recode dev 0=1 if denom==32 
-recode dev 0=1 if denom==33 
-recode dev 0=1 if denom==34 
-recode dev 0=1 if denom==42 
-
-recode dev 0=1 if whdenom==23 
-recode dev 0=1 if whdenom==18 
-recode dev 0=1 if whdenom==15 
-recode dev 0=1 if whdenom==10 
-recode dev 0=1 if whdenom==14 
-
-recode dev 0=1 if whother==93 
- 
-recode dev 1=0 if xbp==1 
-
 
 gen xml=other 
 recode xml 1 8 19 23 25 40 44 46 48 49 50 54 70 71 72 73 81 89 96 99 105 119 148=1 *=0 
