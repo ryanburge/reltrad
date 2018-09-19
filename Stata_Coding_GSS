@@ -12,7 +12,7 @@ recode xaffil 1=1 2=4 3=5 4=9 5/10=6 11=1 12=6 13=1 *=.
 label def xaffil 1 prot 4 cath 5 jew 6 other 9 nonaf 
 label values xaffil xaffil 
  
-
+** Black Protestants
 gen xbp=other 
 recode xbp 7 14 15 21 37 38 56 78 79 85 86 87 88 98 103 104 128 133=1 *=0 
 recode xbp 0=1 if denom==12 
