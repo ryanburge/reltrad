@@ -78,7 +78,8 @@ recode other 790=1
 recode other 1=1 else=0
 
 gen none = relig
-recode none 800=1
+recode none 800=1 
+recode none 998=1 
 recode none 1=1 else=0
 
 gen reltrad=0
