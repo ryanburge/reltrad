@@ -12,6 +12,8 @@ This repository contains three folders:
 
 [3. A folder for the National Election Study cumulative contains (contains State code only)](https://github.com/ryanburge/reltrad/tree/master/NES)
 
+![RELTRAD in the GSS](https://raw.githubusercontent.com/ryanburge/reltrad/master/full_reltrad_gss_new.png)
+
 
 
 
