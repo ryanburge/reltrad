@@ -1,6 +1,7 @@
 library(tidyverse)
 library(car)
 library(haven)
+## This syntax was translated from Stata by Blake Eggleston ###
 
 ## Read the GSS Data in as an object named gss ####
 gss <- read_dta("gss.dta")
