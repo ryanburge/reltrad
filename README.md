@@ -10,7 +10,7 @@ This repository contains three folders:
 
 [2. A folder for the General Social Survey (contains both Stata and R code) ](https://github.com/ryanburge/reltrad/tree/master/GSS)
 
-[3. A folder for the National Election Study cumulative contains (contains State code only)](https://github.com/ryanburge/reltrad/tree/master/NES)
+[3. A folder for the National Election Study cumulative contains (contains Stata code only)](https://github.com/ryanburge/reltrad/tree/master/NES)
 
 ![RELTRAD in the GSS](https://raw.githubusercontent.com/ryanburge/reltrad/master/full_reltrad_gss_new.png)
 
