@@ -33,7 +33,7 @@ cces14 <- cces14 %>%
 
 cces14 <- cces14 %>%
   mutate(mbc = recode(religpew_baptist, "7=1; else=0")) %>% 
-  mutate(mbc = black - mbc) %>% 
+  mutate(mbc = mbc - black) %>% 
   mutate(mbc = recode(mbc, "1=1; else=0"))
 
 cces14 <- cces14 %>%

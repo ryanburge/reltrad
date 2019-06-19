@@ -7,46 +7,48 @@ library(car)
 # cces17 <- read_dta("D://cces/data/cces17.dta")
 
 cces17 <- cces17 %>% 
-  mutate(white = recode(race, "1=1; else=0"))
+  mutate(white = recode(race, "1=1; else=0")) %>% 
+  mutate(black = recode(race, "2=1; else=0"))
 
 ## Baptist
 
-cces17 <- cces17 %>%
-  mutate(sbc = recode(cces17$religpew_baptist, "1=1; else=0")) %>% 
-  mutate(sbc = white + sbc) %>% 
-  mutate(sbc = recode(sbc, "2=1; else=0"))
 
-cces17 <- cces17 %>%
-  mutate(abc = recode(cces17$religpew_baptist, "2=1; else=0")) %>% 
-  mutate(abc = white + abc) %>% 
-  mutate(abc = recode(abc, "2=1; else=0"))
+cces16 <- cces16 %>%
+  mutate(sbc = recode(religpew_baptist, "1=1; else=0")) %>% 
+  mutate(sbc = sbc - black) %>% 
+  mutate(sbc = recode(sbc, "1=1; else=0"))
 
-cces17 <- cces17 %>%
-  mutate(ibc = recode(cces17$religpew_baptist, "5=1; else=0")) 
+cces16 <- cces16 %>%
+  mutate(abc = recode(religpew_baptist, "2=1; else=0")) %>% 
+  mutate(abc = abc - black) %>% 
+  mutate(abc = recode(abc, "1=1; else=0"))
 
-cces17 <- cces17 %>%
-  mutate(bgc = recode(cces17$religpew_baptist, "6=1; else=0")) 
-  
-cces17 <- cces17 %>%
-  mutate(mbc = recode(cces17$religpew_baptist, "7=1; else=0")) %>% 
-  mutate(mbc = white + mbc) %>% 
-  mutate(mbc = recode(mbc, "2=1; else=0"))
+cces16 <- cces16 %>%
+  mutate(ibc = recode(religpew_baptist, "5=1; else=0")) 
 
-cces17 <- cces17 %>%
-  mutate(cb = recode(cces17$religpew_baptist, "8=1; else=0")) 
+cces16 <- cces16 %>%
+  mutate(bgc = recode(religpew_baptist, "6=1; else=0")) 
 
-cces17 <- cces17 %>%
-  mutate(fwb = recode(cces17$religpew_baptist, "9=1; else=0")) 
+cces16 <- cces16 %>%
+  mutate(mbc = recode(religpew_baptist, "7=1; else=0")) %>% 
+  mutate(mbc = mbc - black) %>% 
+  mutate(mbc = recode(mbc, "1=1; else=0"))
 
-cces17 <- cces17 %>%
-  mutate(gabb = recode(cces17$religpew_baptist, "10=1; else=0")) 
+cces16 <- cces16 %>%
+  mutate(cb = recode(religpew_baptist, "8=1; else=0")) 
 
-cces17 <- cces17 %>%
-  mutate(obc = recode(cces17$religpew_baptist, "90=1; else=0")) %>% 
-  mutate(obc = white + obc) %>% 
-  mutate(obc = recode(obc, "2=1; else=0"))
+cces16 <- cces16 %>%
+  mutate(fwb = recode(religpew_baptist, "9=1; else=0")) 
 
-cces17 <- cces17 %>% 
+cces16 <- cces16 %>%
+  mutate(gabb = recode(religpew_baptist, "10=1; else=0")) 
+
+cces16 <- cces16 %>%
+  mutate(obc = recode(religpew_baptist, "90=1; else=0")) %>% 
+  mutate(obc = obc - black) %>% 
+  mutate(obc = recode(obc, "1=1; else=0"))
+
+cces16 <- cces16 %>% 
   mutate(evanbap = sbc + abc + ibc + bgc + mbc + cb + fwb + gabb + obc)
 
 ## Methodist
