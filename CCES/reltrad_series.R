@@ -13,37 +13,37 @@ cces <- cces %>%
 ## Baptist
 
 cces <- cces %>%
-  mutate(sbc = recode(religpew_baptist, "1=1; else=0")) %>% 
+  mutate(sbc = recode(baptist, "1=1; else=0")) %>% 
   mutate(sbc = sbc - black) %>% 
   mutate(sbc = recode(sbc, "1=1; else=0"))
 
 cces <- cces %>%
-  mutate(abc = recode(religpew_baptist, "2=1; else=0")) %>% 
+  mutate(abc = recode(baptist, "2=1; else=0")) %>% 
   mutate(abc = abc - black) %>% 
   mutate(abc = recode(abc, "1=1; else=0"))
 
 cces <- cces %>%
-  mutate(ibc = recode(religpew_baptist, "5=1; else=0")) 
+  mutate(ibc = recode(baptist, "5=1; else=0")) 
 
 cces <- cces %>%
-  mutate(bgc = recode(religpew_baptist, "6=1; else=0")) 
+  mutate(bgc = recode(baptist, "6=1; else=0")) 
 
 cces <- cces %>%
-  mutate(mbc = recode(religpew_baptist, "7=1; else=0")) %>% 
+  mutate(mbc = recode(baptist, "7=1; else=0")) %>% 
   mutate(mbc = mbc - black) %>% 
   mutate(mbc = recode(mbc, "1=1; else=0"))
 
 cces <- cces %>%
-  mutate(cb = recode(religpew_baptist, "8=1; else=0")) 
+  mutate(cb = recode(baptist, "8=1; else=0")) 
 
 cces <- cces %>%
-  mutate(fwb = recode(religpew_baptist, "9=1; else=0")) 
+  mutate(fwb = recode(baptist, "9=1; else=0")) 
 
 cces <- cces %>%
-  mutate(gabb = recode(religpew_baptist, "10=1; else=0")) 
+  mutate(gabb = recode(baptist, "10=1; else=0")) 
 
 cces <- cces %>%
-  mutate(obc = recode(religpew_baptist, "90=1; else=0")) %>% 
+  mutate(obc = recode(baptist, "90=1; else=0")) %>% 
   mutate(obc = obc - black) %>% 
   mutate(obc = recode(obc, "1=1; else=0"))
 

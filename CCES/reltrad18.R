@@ -212,3 +212,24 @@ cces18 <- cces18 %>%
 
 
 
+
+## Making Trads ####
+
+cces18 <- cces18 %>% 
+  mutate(trad = frcode(evangelical == 1 & race == 1 ~ "White\nEvangelical",
+                       evangelical == 1 & race != 1 ~ "Non-White\nEvangelical",
+                       mainline == 1 ~ "Mainline",
+                       religpew == 1 & race == 2 ~ "Black\nProtestant",
+                       catholic == 1 & race == 1 ~ "White\nCatholic",
+                       catholic == 1 & race != 1 ~ "Non-White\nCatholic",
+                       religpew == 3 ~ "Mormon",
+                       religpew == 4 ~ "Orthodox",
+                       religpew == 5 ~ "Jewish",
+                       religpew == 6 ~ "Muslim",
+                       religpew == 7 ~ "Buddhist",
+                       religpew == 8 ~ "Hindu",
+                       religpew == 9 ~ "Atheist",
+                       religpew == 10 ~ "Agnostic",
+                       religpew == 11 ~ "Nothing in Particular",
+                       TRUE ~ "Unclassified"))  
+
