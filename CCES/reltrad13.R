@@ -1,10 +1,7 @@
-
-library(tidyverse)
-# library(haven)
+library(socsci) # remotes::install_github("ryanburge/socsci")
 library(car)
 
-
-# cces13 <- read_dta("D://cces/data/cces13.dta")
+## Read your data in as cces13
 
 cces13 <- cces13 %>% 
   mutate(white = recode(race, "1=1; else=0")) %>% 

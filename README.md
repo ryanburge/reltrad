@@ -10,6 +10,8 @@ This repository contains three folders:
 
 [2. A folder for the General Social Survey (contains both Stata and R code) ](https://github.com/ryanburge/reltrad/tree/master/GSS)
 
+Inside the GSS folder is a syntax file called new_reltrad.R. This creates the new eight category typology that was established by Burge and Djupe in [Falling Through the Cracks.](https://link.springer.com/article/10.1007/s13644-020-00441-y) 
+
 [3. A folder for the National Election Study cumulative (contains Stata code only)](https://github.com/ryanburge/reltrad/tree/master/NES)
 
 ![RELTRAD in the GSS](https://raw.githubusercontent.com/ryanburge/reltrad/master/full_reltrad_gss_new.png)

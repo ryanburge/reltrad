@@ -1,11 +1,7 @@
-
-# cces14 <- read_dta("D://cces/data/cces14.dta")
-
-
-library(tidyverse)
-# library(haven)
+library(socsci) # remotes::install_github("ryanburge/socsci")
 library(car)
 
+## Read your data in as cces14
 
 # cces14 <- read_dta("D://cces/data/cces14.dta")
 

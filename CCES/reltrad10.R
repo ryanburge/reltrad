@@ -1,4 +1,7 @@
+library(socsci) # remotes::install_github("ryanburge/socsci")
+library(car)
 
+## Read your data in as cces10
 # cces10 <- read_dta("D://cces/data/cces10.dta")
 
 
