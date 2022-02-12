@@ -16,6 +16,8 @@ Inside the GSS folder is a syntax file called new_reltrad.R. This creates the ne
 
 ![RELTRAD in the GSS](https://raw.githubusercontent.com/ryanburge/reltrad/master/full_reltrad_gss_new.png)
 
+There was a small update to this code published on 2/11/2022 after some errors were noticed in the code for the Cooperative Election Study. 
+
 
 
 

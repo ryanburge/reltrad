@@ -4,18 +4,10 @@ cces <- cces %>%
   mutate(white = recode(race_14, "1=1; else=0")) %>% 
   mutate(black = recode(race_14, "2=1; else=0"))
 
-## baptist_14
-
-
 cces <- cces %>%
   mutate(sbc = recode(religpew_baptist_14, "1=1; else=0")) %>% 
   mutate(sbc = sbc - black) %>% 
   mutate(sbc = recode(sbc, "1=1; else=0"))
-
-cces <- cces %>%
-  mutate(abc = recode(religpew_baptist_14, "2=1; else=0")) %>% 
-  mutate(abc = abc - black) %>% 
-  mutate(abc = recode(abc, "1=1; else=0"))
 
 cces <- cces %>%
   mutate(ibc = recode(religpew_baptist_14, "5=1; else=0")) 
@@ -43,7 +35,7 @@ cces <- cces %>%
   mutate(obc = recode(obc, "1=1; else=0"))
 
 cces <- cces %>% 
-  mutate(evanbap = sbc + abc + ibc + bgc + mbc + cb + fwb + gabb + obc)
+  mutate(evanbap = sbc +  ibc + bgc + mbc + cb + fwb + gabb + obc)
 
 ## methodist_14
 cces <- cces %>%
@@ -85,6 +77,11 @@ cces <- cces %>%
   mutate(evanpent = recode(religpew_pentecost_14, "1:90 =1; else=0"))
 
 ## Episcopal 
+
+## Christian 
+cces <- cces %>% 
+  mutate(evanxtn = recode(religpew_christian_14, "1=1; else = 0"))
+
 ## None
 
 ## Congregregational
@@ -108,7 +105,9 @@ cces <- cces %>%
 ## Making Mainline
 
 cces <- cces %>% 
-  mutate(abc = recode(cces$religpew_baptist_14, "2=1; 4=1; else=0"))
+  mutate(abc = recode(cces$religpew_baptist_14, "2=1; 4=1; else=0")) %>% 
+  mutate(black = case_when(race == 2 ~ 1, TRUE ~ 0)) %>% 
+  mutate(abc = case_when(abc == 1 & black != 1 ~ 1, TRUE ~ 0)) 
 
 cces <- cces %>% 
   mutate(epis = recode(cces$religpew_episcop_14, "1:90=1; else=0"))
@@ -124,6 +123,9 @@ cces <- cces %>%
 
 cces <- cces %>% 
   mutate(cong = recode(cces$religpew_congreg_14, "1=1; 3=1; 90=1; else=0"))
+
+cces <- cces %>% 
+  mutate(doc = recode(religpew_christian_14, "2:90=1; else=0"))
 
 cces <- cces %>% 
   mutate(doc = recode(cces$religpew_protestant_14, "8=1; else=0"))
@@ -212,5 +214,3 @@ cces <- cces %>%
                              jewish_14 == 1 ~ "Jewish",
                              other_14 == 1 ~ "Other",
                              none_14 == 1 ~ "None"))
-
-
