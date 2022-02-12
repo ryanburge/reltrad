@@ -13,32 +13,32 @@ cces <- cces %>%
 ## Baptist
 
 cces <- cces %>%
-  mutate(sbc = recode(religpew_baptist, "1=1; else=0")) %>% 
+  mutate(sbc = recode(baptist, "1=1; else=0")) %>% 
   mutate(sbc = sbc - black) %>% 
   mutate(sbc = recode(sbc, "1=1; else=0"))
 
 cces <- cces %>%
-  mutate(ibc = recode(religpew_baptist, "5=1; else=0")) 
+  mutate(ibc = recode(baptist, "5=1; else=0")) 
 
 cces <- cces %>%
-  mutate(bgc = recode(religpew_baptist, "6=1; else=0")) 
+  mutate(bgc = recode(baptist, "6=1; else=0")) 
 
 cces <- cces %>%
-  mutate(mbc = recode(religpew_baptist, "7=1; else=0")) %>% 
+  mutate(mbc = recode(baptist, "7=1; else=0")) %>% 
   mutate(mbc = mbc - black) %>% 
   mutate(mbc = recode(mbc, "1=1; else=0"))
 
 cces <- cces %>%
-  mutate(cb = recode(religpew_baptist, "8=1; else=0")) 
+  mutate(cb = recode(baptist, "8=1; else=0")) 
 
 cces <- cces %>%
-  mutate(fwb = recode(religpew_baptist, "9=1; else=0")) 
+  mutate(fwb = recode(baptist, "9=1; else=0")) 
 
 cces <- cces %>%
-  mutate(gabb = recode(religpew_baptist, "10=1; else=0")) 
+  mutate(gabb = recode(baptist, "10=1; else=0")) 
 
 cces <- cces %>%
-  mutate(obc = recode(religpew_baptist, "90=1; else=0")) %>% 
+  mutate(obc = recode(baptist, "90=1; else=0")) %>% 
   mutate(obc = obc - black) %>% 
   mutate(obc = recode(obc, "1=1; else=0"))
 
@@ -47,7 +47,7 @@ cces <- cces %>%
 
 ## Methodist
 cces <- cces %>%
-  mutate(fmc = recode(religpew_methodist, "2=1; else=0")) 
+  mutate(fmc = recode(methodist, "2=1; else=0")) 
 
 cces <- cces %>% 
   mutate(evanmeth = fmc)
@@ -55,29 +55,29 @@ cces <- cces %>%
 ##Non-Denom
 
 cces <- cces %>% 
-  mutate(hiatt = recode(pew_churatd, "1:3=1; else=0")) %>% 
-  mutate(nd = recode(religpew_nondenom, "1:90=1; else=0")) %>% 
+  mutate(hiatt = recode(pew_attendance, "1:3=1; else=0")) %>% 
+  mutate(nd = recode(nondenom, "1:90=1; else=0")) %>% 
   mutate(evannd = nd + hiatt) %>% 
   mutate(evannd =  recode(evannd, "2=1; else=0"))
 
 ## Lutheran 
 
 cces <- cces %>% 
-  mutate(mz = recode(religpew_lutheran, "2=1; else=0")) %>% 
-  mutate(wi = recode(religpew_lutheran, "3=1; else=0")) %>% 
+  mutate(mz = recode(lutheran, "2=1; else=0")) %>% 
+  mutate(wi = recode(lutheran, "3=1; else=0")) %>% 
   mutate(evanluth = mz + wi)
 
 ## Presbyterian
 
 cces <- cces %>% 
-  mutate(pca = recode(religpew_presby, "2=1; else=0")) %>% 
-  mutate(epc = recode(religpew_presby, "6=1; else=0")) %>% 
+  mutate(pca = recode(presbyterian, "2=1; else=0")) %>% 
+  mutate(epc = recode(presbyterian, "6=1; else=0")) %>% 
   mutate(evanpres = pca + epc)
 
 ## Pentecostal 
 
 cces <- cces %>% 
-  mutate(evanpent = recode(religpew_pentecost, "1:90 =1; else=0")) %>% 
+  mutate(evanpent = recode(pentecostal, "1:90 =1; else=0")) %>% 
   mutate(evanpent = evanpent - black) %>% 
   mutate(evanpent = recode(evanpent, "1=1; else=0"))
 
@@ -85,18 +85,18 @@ cces <- cces %>%
 
 ## Christian #### 
 cces <- cces %>% 
-  mutate(evanxtn = recode(religpew_christian, "1=1; else = 0"))
+  mutate(evanxtn = recode(christian, "1=1; else = 0"))
 
 ## None
 
 ## Congregregational
 
 cces <- cces %>% 
-  mutate(evancong = recode(religpew_congreg, "2=1; else=0"))
+  mutate(evancong = recode(congregational, "2=1; else=0"))
 
 ## Holiness
 cces <- cces %>% 
-  mutate(evanholy = recode(religpew_holiness, "1:90 =1; else=0")) %>% 
+  mutate(evanholy = recode(holiness, "1:90 =1; else=0")) %>% 
   mutate(evanholy = evanholy - black) %>% 
   mutate(evanholy = recode(evanholy, "1=1; else=0"))
 
@@ -112,30 +112,30 @@ cces <- cces %>%
 ## Making Mainline
 
 cces <- cces %>% 
-  mutate(abc = recode(religpew_baptist, "2=1; 4=1; else=0")) %>% 
+  mutate(abc = recode(baptist, "2=1; 4=1; else=0")) %>% 
   mutate(black = case_when(race == 2 ~ 1, TRUE ~ 0)) %>% 
   mutate(abc = case_when(abc == 1 & black != 1 ~ 1, TRUE ~ 0)) 
 
 cces <- cces %>% 
-  mutate(epis = recode(religpew_episcop, "1:90=1; else=0"))
+  mutate(epis = recode(episcopal, "1:90=1; else=0"))
 
 cces <- cces %>% 
-  mutate(luth = recode(religpew_lutheran, "1=1; 4=1; else=0"))
+  mutate(luth = recode(lutheran, "1=1; 4=1; else=0"))
 
 cces <- cces %>% 
-  mutate(meth = recode(religpew_methodist, "1=1; 90=1; else=0"))
+  mutate(meth = recode(methodist, "1=1; 90=1; else=0"))
 
 cces <- cces %>% 
-  mutate(pres = recode(religpew_presby, "1=1; 90=1; else=0"))
+  mutate(pres = recode(presbyterian, "1=1; 90=1; else=0"))
 
 cces <- cces %>% 
-  mutate(cong = recode(religpew_congreg, "1=1; 3=1; 90=1; else=0"))
+  mutate(cong = recode(congregational, "1=1; 3=1; 90=1; else=0"))
 
 cces <- cces %>% 
-  mutate(doc = recode(religpew_christian, "2:90=1; else=0"))
+  mutate(doc = recode(christian, "2:90=1; else=0"))
 
 cces <- cces %>% 
-  mutate(reform = recode(religpew_protestant, "11=1; else=0"))
+  mutate(reform = recode(protestant, "11=1; else=0"))
 
 cces <- cces %>% 
   mutate(mainline = abc + epis + luth + meth + pres + cong + doc + reform) %>% 
@@ -145,46 +145,46 @@ cces <- cces %>%
 
 
 cces <- cces %>% 
-  mutate(meth = recode(religpew_methodist, "3:4=1; else=0"))
+  mutate(meth = recode(methodist, "3:4=1; else=0"))
 
 cces <- cces %>%
-  mutate(sbc = recode(religpew_baptist, "1=1; else=0")) %>% 
+  mutate(sbc = recode(baptist, "1=1; else=0")) %>% 
   mutate(sbc = black + sbc) %>% 
   mutate(sbc = recode(sbc, "2=1; else=0"))
 
 cces <- cces %>% 
-  mutate(nbap = recode(religpew_baptist, "3=1; else=0"))
+  mutate(nbap = recode(baptist, "3=1; else=0"))
 
 cces <- cces %>%
-  mutate(abc = recode(religpew_baptist, "2=1; else=0")) %>% 
+  mutate(abc = recode(baptist, "2=1; else=0")) %>% 
   mutate(abc = black + abc) %>% 
   mutate(abc = recode(abc, "2=1; else=0"))
 
 cces <- cces %>%
-  mutate(miss = recode(religpew_baptist, "7=1; else=0")) %>% 
+  mutate(miss = recode(baptist, "7=1; else=0")) %>% 
   mutate(miss = black + miss) %>% 
   mutate(miss = recode(miss, "2=1; else=0"))
 
 cces <- cces %>%
-  mutate(obap = recode(religpew_baptist, "90=1; else=0")) %>% 
+  mutate(obap = recode(baptist, "90=1; else=0")) %>% 
   mutate(obap = black + obap) %>% 
   mutate(obap = recode(obap, "2=1; else=0"))
 
 cces <- cces %>%
-  mutate(ometh = recode(religpew_methodist, "90=1; else=0")) %>% 
+  mutate(ometh = recode(methodist, "90=1; else=0")) %>% 
   mutate(ometh = black + ometh) %>% 
   mutate(ometh = recode(ometh, "2=1; else=0"))
 
 cces <- cces %>% 
-  mutate(apos = recode(religpew_pentecost, "6=1; 7=1; else=0"))
+  mutate(apos = recode(pentecostal, "6=1; 7=1; else=0"))
 
 cces <- cces %>%
-  mutate(open = recode(religpew_pentecost, "90=1; else=0")) %>% 
+  mutate(open = recode(pentecostal, "90=1; else=0")) %>% 
   mutate(open = black + open) %>% 
   mutate(open = recode(open, "2=1; else=0"))
 
 cces <- cces %>%
-  mutate(holy = recode(religpew_holiness, "90=1; else=0")) %>% 
+  mutate(holy = recode(holiness, "90=1; else=0")) %>% 
   mutate(holy = black + holy) %>% 
   mutate(holy = recode(holy, "2=1; else=0"))
 
@@ -196,13 +196,13 @@ cces <- cces %>%
 ## Everything Else
 
 cces <- cces %>% 
-  mutate(catholic = recode(religpew, "2=1; else=0"))
+  mutate(catholic = recode(religion, "2=1; else=0"))
 
 cces <- cces %>% 
-  mutate(jewish = recode(religpew, "5=1; else=0"))
+  mutate(jewish = recode(religion, "5=1; else=0"))
 
 cces <- cces %>% 
-  mutate(other = recode(religpew, "3:4=1; 6:8=1; 12=1; else=0"))
+  mutate(other = recode(religion, "3:4=1; 6:8=1; 12=1; else=0"))
 
 cces <- cces %>% 
-  mutate(none = recode(religpew, "9:11=1; else=0"))
+  mutate(none = recode(religion, "9:11=1; else=0"))
