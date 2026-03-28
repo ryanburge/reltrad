@@ -14,7 +14,7 @@ Inside the GSS folder is a syntax file called new_reltrad.R. This creates the ne
 
 [3. A folder for the National Election Study cumulative (contains Stata code only)](https://github.com/ryanburge/reltrad/tree/master/NES)
 
-![RELTRAD in the GSS](https://graphdump.work/#graph-10074)
+![RELTRAD in the GSS](https://graphdump.work/images/gss_reltrad6_2024.png)
 
 I've updated this with CES code all the way through 2025 now. 
 
