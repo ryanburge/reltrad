@@ -23,14 +23,14 @@ cces_trad <- function(df, var){
 }
 
 # Race indicators
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     white = case_when(race == 1 ~ 1, TRUE ~ 0),
     black = case_when(race == 2 ~ 1, TRUE ~ 0)
   )
 
 ## Baptist
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     sbc   = case_when(religpew_baptist == 1 & black != 1 ~ 1, TRUE ~ 0),
     ibc   = case_when(religpew_baptist == 5 ~ 1, TRUE ~ 0),
@@ -44,14 +44,15 @@ cces13 <- cces13 %>%
   )
 
 ## Methodist
-cces13 <- cces13 %>%
+# Note: 2023 CCES uses religpew_methodist_new
+cces23 <- cces23 %>%
   mutate(
-    fmc     = case_when(religpew_methodist == 2 ~ 1, TRUE ~ 0),
+    fmc     = case_when(religpew_methodist_new == 2 ~ 1, TRUE ~ 0),
     evanmeth = fmc
   )
 
 ## Non-Denom
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     hiatt  = case_when(pew_churatd %in% 1:3 ~ 1, TRUE ~ 0),
     nd     = case_when(religpew_nondenom %in% 1:90 ~ 1, TRUE ~ 0),
@@ -59,7 +60,7 @@ cces13 <- cces13 %>%
   )
 
 ## Lutheran
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     mz       = case_when(religpew_lutheran == 2 ~ 1, TRUE ~ 0),
     wi       = case_when(religpew_lutheran == 3 ~ 1, TRUE ~ 0),
@@ -67,7 +68,7 @@ cces13 <- cces13 %>%
   )
 
 ## Presbyterian
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     pca      = case_when(religpew_presby == 2 ~ 1, TRUE ~ 0),
     epc      = case_when(religpew_presby == 6 ~ 1, TRUE ~ 0),
@@ -75,31 +76,31 @@ cces13 <- cces13 %>%
   )
 
 ## Pentecostal
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     evanpent = case_when(religpew_pentecost %in% 1:90 & black != 1 ~ 1, TRUE ~ 0)
   )
 
 ## Christian
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     evanxtn = case_when(religpew_christian == 1 ~ 1, TRUE ~ 0)
   )
 
 ## Congregational
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     evancong = case_when(religpew_congreg == 2 ~ 1, TRUE ~ 0)
   )
 
 ## Holiness
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     evanholy = case_when(religpew_holiness %in% 1:90 & black != 1 ~ 1, TRUE ~ 0)
   )
 
 ## Total Evangelical
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     evangelical = case_when(
       (evanbap + evanmeth + evannd + evanluth + evanpres + evanpent + evanxtn + evancong + evanholy) >= 1 ~ 1,
@@ -108,12 +109,12 @@ cces13 <- cces13 %>%
   )
 
 ## Mainline Protestant
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     abc    = case_when(religpew_baptist %in% c(2, 4) & black != 1 ~ 1, TRUE ~ 0),
     epis   = case_when(religpew_episcop %in% 1:90 ~ 1, TRUE ~ 0),
     luth   = case_when(religpew_lutheran %in% c(1, 4) ~ 1, TRUE ~ 0),
-    meth   = case_when(religpew_methodist %in% c(1, 90) ~ 1, TRUE ~ 0),
+    meth   = case_when(religpew_methodist_new %in% c(1, 90) ~ 1, TRUE ~ 0),
     pres   = case_when(religpew_presby %in% c(1, 90) ~ 1, TRUE ~ 0),
     cong   = case_when(religpew_congreg %in% c(1, 3, 90) ~ 1, TRUE ~ 0),
     doc    = case_when(religpew_christian %in% 2:90 ~ 1, TRUE ~ 0),
@@ -125,15 +126,15 @@ cces13 <- cces13 %>%
   )
 
 ## Black Protestant
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
-    meth  = case_when(religpew_methodist %in% 3:4 ~ 1, TRUE ~ 0),
+    meth  = case_when(religpew_methodist_new %in% 3:4 ~ 1, TRUE ~ 0),
     sbc   = case_when(religpew_baptist == 1 & black == 1 ~ 1, TRUE ~ 0),
     nbap  = case_when(religpew_baptist == 3 ~ 1, TRUE ~ 0),
     abc   = case_when(religpew_baptist == 2 & black == 1 ~ 1, TRUE ~ 0),
     miss  = case_when(religpew_baptist == 7 & black == 1 ~ 1, TRUE ~ 0),
     obap  = case_when(religpew_baptist == 90 & black == 1 ~ 1, TRUE ~ 0),
-    ometh = case_when(religpew_methodist == 90 & black == 1 ~ 1, TRUE ~ 0),
+    ometh = case_when(religpew_methodist_new == 90 & black == 1 ~ 1, TRUE ~ 0),
     apos  = case_when(religpew_pentecost %in% c(6, 7) ~ 1, TRUE ~ 0),
     open  = case_when(religpew_pentecost == 90 & black == 1 ~ 1, TRUE ~ 0),
     holy  = case_when(religpew_holiness == 90 & black == 1 ~ 1, TRUE ~ 0),
@@ -144,7 +145,7 @@ cces13 <- cces13 %>%
   )
 
 ## Other traditions
-cces13 <- cces13 %>%
+cces23 <- cces23 %>%
   mutate(
     catholic = case_when(religpew == 2 ~ 1, TRUE ~ 0),
     jewish   = case_when(religpew == 5 ~ 1, TRUE ~ 0),
@@ -152,4 +153,4 @@ cces13 <- cces13 %>%
     none     = case_when(religpew %in% 9:11 ~ 1, TRUE ~ 0)
   )
 
-cces13 <- cces_trad(cces13, religpew)
+cces23 <- cces_trad(cces23, religpew)
